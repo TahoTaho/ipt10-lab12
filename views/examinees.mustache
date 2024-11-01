@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examinees</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    
+    <style>
+        body {
+            padding-top: 50px;
+            background-color: #f9f9f9;
+        }
+        .main__container {
+            width: 80vw;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #555;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .export-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .export-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="main__container">
+        <h2>Exam Attempts</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Exam Attempt Date</th>
+                    <th>Examinee Name</th>
+                    <th>Exam Items</th>
+                    <th>Total Score</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#examAttempts}}
+                    <tr>
+                        <td>{{ attempt_date }}</td>
+                        <td>{{ complete_name }}</td>
+                        <td>{{ exam_number_of_items }}</td>
+                        <td>{{ total_score }}</td>
+                        <td>
+                            <a href="/exam-attempts/{{ id }}" class="export-btn">Export to PDF</a>
+                        </td>
+                    </tr>
+                {{/examAttempts}}
+            </tbody>
+        </table>
+        
+    </div>
+</body>
+</html>
